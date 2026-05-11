@@ -16,27 +16,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class ContratAssurance {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Date dateSouscription;
-
     private Date dateValidation;
-
     @Enumerated(EnumType.STRING)
     private StatutContrat statut;
-
     private double montantCotisation;
-
     private int dureeContrat;
-
     private double tauxCouverture;
-
     @ManyToOne
     private Client client;
-
     @OneToMany(mappedBy = "contratAssurance", cascade = CascadeType.ALL)
     private List<Paiement> paiements;
 }

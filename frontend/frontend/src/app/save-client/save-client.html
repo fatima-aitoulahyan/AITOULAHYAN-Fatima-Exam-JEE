@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">{{ isEditMode ? 'Modifier le client' : 'Nouveau client' }}</h5>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+            {{ successMessage }}
+            <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+          </div>
+
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+            {{ errorMessage }}
+            <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+          </div>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Nom complet</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              [(ngModel)]="client.name"
+              placeholder="ex: Ahmed Benali"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [(ngModel)]="client.email"
+              placeholder="ex: ahmed@email.com"
+              required
+            />
+          </div>
+
+          <div class="d-flex gap-2">
+            <button
+              class="btn btn-primary"
+              (click)="saveClient()"
+              [disabled]="isLoading">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+              {{ isEditMode ? 'Modifier' : 'Enregistrer' }}
+            </button>
+            <button class="btn btn-outline-secondary" routerLink="/clients">
+              Annuler
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

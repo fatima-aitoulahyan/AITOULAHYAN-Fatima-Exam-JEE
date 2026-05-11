@@ -1,0 +1,127 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+
+      <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0">Nouveau contrat d'assurance</h5>
+        </div>
+        <div class="card-body">
+
+          <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+            {{ successMessage }}
+            <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show">
+            {{ errorMessage }}
+            <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+          </div>
+
+          <!-- Type de contrat -->
+          <div class="mb-3">
+            <label class="form-label">Type de contrat</label>
+            <div class="d-flex gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="typeAuto"
+                       name="typeContrat" value="AUTO"
+                       [(ngModel)]="typeContrat" />
+                <label class="form-check-label" for="typeAuto">🚗 Automobile</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="typeSante"
+                       name="typeContrat" value="SANTE"
+                       [(ngModel)]="typeContrat" />
+                <label class="form-check-label" for="typeSante">🏥 Santé</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Champs communs -->
+          <div class="mb-3">
+            <label class="form-label">ID Client</label>
+            <input type="number" class="form-control" [(ngModel)]="contrat.clientId"
+                   placeholder="ex: 1" />
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Date de souscription</label>
+              <input type="date" class="form-control" [(ngModel)]="contrat.dateSouscription" />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Date de validation</label>
+              <input type="date" class="form-control" [(ngModel)]="contrat.dateValidation" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Montant cotisation (MAD)</label>
+              <input type="number" class="form-control" [(ngModel)]="contrat.montantCotisation"
+                     placeholder="ex: 1500" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Durée contrat (mois)</label>
+              <input type="number" class="form-control" [(ngModel)]="contrat.dureeContrat"
+                     placeholder="ex: 12" />
+            </div>
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Taux couverture (%)</label>
+              <input type="number" class="form-control" [(ngModel)]="contrat.tauxCouverture"
+                     placeholder="ex: 80" />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Statut</label>
+            <select class="form-select" [(ngModel)]="contrat.statut">
+              <option value="ACTIF">Actif</option>
+              <option value="SUSPENDU">Suspendu</option>
+              <option value="EXPIRE">Expiré</option>
+            </select>
+          </div>
+
+          <!-- Champs spécifiques AUTO -->
+          <div *ngIf="typeContrat === 'AUTO'">
+            <hr />
+            <h6 class="text-muted mb-3">Informations véhicule</h6>
+            <div class="mb-3">
+              <label class="form-label">Numéro d'immatriculation</label>
+              <input type="text" class="form-control" [(ngModel)]="autoFields.numeroImmatriculation"
+                     placeholder="ex: 12345-A-7" />
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Marque</label>
+                <input type="text" class="form-control" [(ngModel)]="autoFields.marqueVehicule"
+                       placeholder="ex: Dacia" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Modèle</label>
+                <input type="text" class="form-control" [(ngModel)]="autoFields.modeleVehicule"
+                       placeholder="ex: Logan" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Champs spécifiques SANTE (extension possible) -->
+          <div *ngIf="typeContrat === 'SANTE'">
+            <hr />
+            <h6 class="text-muted mb-3">Informations santé</h6>
+            <p class="text-muted small">Complétez les informations générales ci-dessus.</p>
+          </div>
+
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-success" (click)="saveContrat()" [disabled]="isLoading">
+              <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-1"></span>
+              Enregistrer le contrat
+            </button>
+            <button class="btn btn-outline-secondary" routerLink="/">Annuler</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

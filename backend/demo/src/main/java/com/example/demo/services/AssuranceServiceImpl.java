@@ -50,7 +50,7 @@ public class AssuranceServiceImpl implements AssuranceService {
         Client client = clientRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Client not found"));
 
-        
+
         client.setEmail(clientDTO.getEmail());
 
         Client updated = clientRepository.save(client);
