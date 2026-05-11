@@ -1,6 +1,6 @@
 package com.example.demo.entities;
 
-import com.example.demo.enums.StatutContrat;
+import com.example.demo.enums.TypePaiement;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,15 +15,12 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContratAssurance {
+public class Paiement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date dateValidation;
-    private StatutContrat statut ;
-    private double montantCotisation ;
-    private int dureeContrat;
-    private double tauxCouverturee;
-
+    private Date datePaiement;
+    private double montant;
+    private TypePaiement typePaiement;
 
 }
