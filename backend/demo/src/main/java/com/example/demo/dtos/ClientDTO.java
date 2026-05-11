@@ -10,5 +10,6 @@ public class ClientDTO {
     private String name;
     private String email;
 
-    private List<ContratDTO> contrats;
+    private List<ContratAssuranceDTO> contrats;
+
 }

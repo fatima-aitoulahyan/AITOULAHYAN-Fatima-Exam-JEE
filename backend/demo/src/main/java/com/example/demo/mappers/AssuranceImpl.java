@@ -13,7 +13,7 @@ public class AssuranceImpl {
         BeanUtils.copyProperties(client,clientDTO);
         return clientDTO;
     }
-    public Client fromClintDTO(ClientDTO clientDTO){
+    public Client fromClientDTO(ClientDTO clientDTO){
         Client client = new Client();
         BeanUtils.copyProperties(clientDTO,client);
         return client;
@@ -23,6 +23,11 @@ public class AssuranceImpl {
         BeanUtils.copyProperties(paiement,paiementDTO);
         return paiementDTO;
 
+    }
+    public Paiement fromPaiementDTO(PaiementDTO paiementDTO){
+        Paiement paiement = new Paiement();
+        BeanUtils.copyProperties(paiementDTO,paiement);
+        return paiement;
     }
     public ContratAutomobileDTO fromContratAutomobile(ContratAutomobile contratAutomobile){
         ContratAutomobileDTO contratAutomobileDTO = new ContratAutomobileDTO();
