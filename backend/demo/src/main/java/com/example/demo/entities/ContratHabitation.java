@@ -1,17 +1,25 @@
 package com.example.demo.entities;
 
 import com.example.demo.enums.TypeLogement;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DiscriminatorValue("HABITATION")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContratHabitation extends ContratAssurance{
-   private TypeLogement typeLogement ;
+public class ContratHabitation extends ContratAssurance {
+
+   @Enumerated(EnumType.STRING)
+   private TypeLogement typeLogement;
+
    private String adresse;
-   private String superficie;
+
+   private double superficie;
 }

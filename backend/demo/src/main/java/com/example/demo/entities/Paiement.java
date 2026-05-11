@@ -1,10 +1,7 @@
 package com.example.demo.entities;
 
 import com.example.demo.enums.TypePaiement;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +19,8 @@ public class Paiement {
     private Date datePaiement;
     private double montant;
     private TypePaiement typePaiement;
+    @ManyToOne
+    @JoinColumn(name = "contrat_id")
+    private ContratAssurance contratAssurance;
 
 }
